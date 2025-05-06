@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ body {
+  background: url("/assets/images/wavy.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.nav-link:hover {
+  color: #4e66ea !important;
+}
+
+/* Custom gradient background styles */
+.bg-gradient-overlay {
+  position: fixed;
+  z-index: -10;
+}
+
+.blur-circle {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: linear-gradient(to top left, rgba(37, 99, 235, 0.4), rgba(147, 51, 234, 0.4));
+  filter: blur(200px);
+}
