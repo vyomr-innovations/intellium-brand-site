@@ -1,11 +1,11 @@
-import Navbar from "../components/Navbar";
+import Navigation from "../components/Navbar";
 import Hero from "../components/Hero";
 import Tools from "../components/Tools";
 
 export default function Home() {
   return (
     <main>
-      <Navbar />
+      <Navigation />
       <Hero />
       <Tools />
     </main>

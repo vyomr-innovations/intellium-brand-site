@@ -6,7 +6,7 @@ interface Tool {
     bgColor: string;
     textColor: string;
 }
-
+import "../public/assets/css/style.min.css"
 const tools: Tool[] = [
     {
         name: "Social Media",

@@ -2,7 +2,7 @@
 
 // import Link from "next/link";
 // import { Menu } from "lucide-react";
-import "@/public/assets/css/style.css"
+import "../public/assets/css/style.min.css"
 
 
 
