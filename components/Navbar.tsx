@@ -12,7 +12,7 @@ export default function Navbar() {
             <div className="container">
                 <nav>
                     <a href="index-1.html" className="logo">
-                        <h1 className="h-10 fs-4">Smart Ai</h1>
+                        <h1 className="h-10 fs-4">Intellium</h1>
                     </a>
                     <div className="lg:hidden flex items-center ms-auto px-2.5">
                         <button
