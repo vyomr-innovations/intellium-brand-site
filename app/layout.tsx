@@ -17,12 +17,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
- 
+
 
   return (
-    <html lang="en">
-    
-      <body className={`${inter.className} inter-var bg-default-900 from:left to-right`}>
+    <html lang="en" suppressHydrationWarning>
+
+      <body suppressHydrationWarning className={`${inter.className} inter-var bg-default-900 from:left to-right`}>
         <div className="bg-gradient-overlay top-0">
           <div className="blur-circle" />
         </div>
@@ -40,6 +40,18 @@ export default function RootLayout({
         </div>
         {children}
       </body>
+      <footer className="bg-default-950/40 backdrop-blur-3xl">
+        <div className="border-t border-white/10 py-6">
+          <div className="container lg:px-20 flex flex-wrap justify-center items-center gap-4 h-full md:justify-between text-center md:text-start">
+            <p className="text-base font-medium text-gray-400">
+              {new Date().getFullYear()} {" "} © Intellium - <a href="#">All Rights Reserved</a>
+            </p>
+            <p className="text-base font-medium text-gray-400">
+              <a href="#">Terms Conditions & Policy</a>
+            </p>
+          </div>
+        </div>
+      </footer>
     </html>
   );
 }

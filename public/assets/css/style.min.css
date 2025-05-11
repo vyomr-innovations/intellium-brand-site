@@ -167,8 +167,7 @@ section {
 .navbar nav .navbar-nav .nav-item .nav-link:focus,
 .navbar nav .navbar-nav .nav-item .nav-link:hover,
 .navbar nav .navbar-nav .nav-item.active .nav-link {
-  --tw-text-opacity: 1;
-  color: #4e66ea;
+  color: #22d3ee;
 }
 .navbar nav .navbar-nav .nav-item.active .nav-link::after {
   width: 75%;
