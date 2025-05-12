@@ -4,13 +4,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 
-
 const inter = Inter({ subsets: ["latin"] });
 
-export const Metadata = {
-  title: "WebAI - AI Startup & Technology Landing Page",
-  description: "Smart AI for Safer Systems",
-};
 
 export default function RootLayout({
   children,
