@@ -26,10 +26,10 @@ export default function Navbar() {
                         className="hs-collapse transition-all duration-300 lg:basis-auto basis-full grow hidden lg:flex items-center justify-center mx-auto mt-2 lg:mt-0">
                         <ul id="navbar-navlist" className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link fw-200" href="#home">Services</a>
+                                <a className="nav-link fw-200" href="#services">Services</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#tools">About Us</a>
+                                <a className="nav-link" href="#about">About Us</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="#features">Contact</a>

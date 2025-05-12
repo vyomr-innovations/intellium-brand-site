@@ -3,7 +3,7 @@ import React from "react";
 import { WavyBackground } from "./ui/wavy-background";
 export default function Hero() {
     return (
-        <WavyBackground className="max-w-4xl mx-auto pb-40" backgroundImageUrl="/assets/images/wavy.png">
+        <WavyBackground  className="max-w-4xl mx-auto pb-40" backgroundImageUrl="/assets/images/wavy.png">
             <h1 className="text-5xl mt-50 md:text-7xl font-bold text-white text-center">
                 Unlock the Power of LLMs with Intellium
             </h1>

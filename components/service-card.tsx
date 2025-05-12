@@ -38,31 +38,24 @@ const RenderDescription = () => {
 export function CanvasRevealEffectDemo() {
     return (
         <>
-            <div className="py-20 flex flex-col lg:flex-row items-center justify-center  w-full gap-4 mx-auto px-8">
+            <div id="services" className="py-20 flex flex-col lg:flex-row items-center justify-center  w-full gap-4 mx-auto px-8">
                 <Card title="LLM Consulting" descption={<RenderDescription />} >
                     <CanvasRevealEffect
                         animationSpeed={5.1}
                         containerClassName="bg-emerald-900"
                     />
                 </Card>
-                <Card title="LLM Consulting" descption={<RenderDescription />}>
+                <Card title="LLM Engineering" descption={<RenderDescription />}>
                     <CanvasRevealEffect
-                        animationSpeed={3}
+                        animationSpeed={5.1}
                         containerClassName="bg-red-600"
-                        colors={[
-                            [236, 72, 153],
-                            [232, 121, 249],
-                        ]}
-                        dotSize={2}
                     />
                     {/* Radial gradient for the cute fade */}
-                    <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/90" />
                 </Card>
-                <Card title="LLM Consulting" descption={<RenderDescription />} >
+                <Card title="LLM Integration" descption={<RenderDescription />} >
                     <CanvasRevealEffect
-                        animationSpeed={3}
+                        animationSpeed={5.1}
                         containerClassName="bg-sky-600"
-                        colors={[[125, 211, 252]]}
                     />
                 </Card>
             </div>

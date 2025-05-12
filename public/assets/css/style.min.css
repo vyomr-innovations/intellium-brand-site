@@ -173,7 +173,7 @@ section {
   width: 75%;
   content: var(--tw-content);
   --tw-bg-opacity: 1;
-  background-color: #4e66ea;
+  background-color: #22d3ee;
 }
 .navbar nav .navbar-nav .nav-btn {
   display: inline-flex;

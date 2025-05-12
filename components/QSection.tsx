@@ -10,22 +10,22 @@ export function PlaceholdersAndVanishInputDemo() {
     ];
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.value);
-    };
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        console.log("submitted");
-    };
+        console.log("Input changed:", e.target.value)
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        console.log("Form submitted")
+    }
     return (
-        <div className="h-[30rem] bg-default-950/40 backdrop-blur-md flex flex-col justify-center  items-center px-4">
+        <div className="h-[20rem] bg-default-950/40 backdrop-blur-md flex flex-col justify-center  items-center px-4">
             <h2 className="mb-10 sm:mb-20 text-5xl text-center sm:text-xl text-white">
                 Ask Aceternity UI Anything
             </h2>
-            <PlaceholdersAndVanishInput
-                placeholders={placeholders}
-                onChange={handleChange}
-                onSubmit={onSubmit}
-            />
+            <div className="w-full max-w-xl">
+                <PlaceholdersAndVanishInput placeholders={placeholders} onChange={handleChange} onSubmit={handleSubmit} />
+            </div>
         </div>
+
     );
 }
