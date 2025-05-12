@@ -13,7 +13,7 @@ export default function Hero() {
 
             <div className="flex justify-center mt-8">
                 <Button borderRadius="10rem"
-                    className="bg-[#4e66ea]  text-white border-3 border-[#4e66ea]">
+                    className="bg-[#000000]  text-white border-1 border-purple-500 hover:bg-purple-500 hover:text-white transition-all duration-300 ease-in-out px-8 py-4 text-lg font-semibold">
                     Talk to Us
                 </Button>
             </div>
