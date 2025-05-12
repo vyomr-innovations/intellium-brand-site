@@ -39,7 +39,6 @@ export default function RootLayout({
           <div className="blur-circle" />
         </div>
         {children}
-      </body>
       <footer className="bg-default-950/40 backdrop-blur-3xl">
         <div className="border-t border-white/10 py-6">
           <div className="container lg:px-20 flex flex-wrap justify-center items-center gap-4 h-full md:justify-between text-center md:text-start">
@@ -52,6 +51,7 @@ export default function RootLayout({
           </div>
         </div>
       </footer>
+      </body>
     </html>
   );
 }

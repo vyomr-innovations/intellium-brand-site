@@ -48,7 +48,7 @@ export function CanvasRevealEffectDemo() {
                 <Card title="LLM Consulting" descption={<RenderDescription />}>
                     <CanvasRevealEffect
                         animationSpeed={3}
-                        containerClassName="bg-blue-600"
+                        containerClassName="bg-red-600"
                         colors={[
                             [236, 72, 153],
                             [232, 121, 249],

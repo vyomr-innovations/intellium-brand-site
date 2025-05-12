@@ -12,7 +12,7 @@ export default function Tools() {
         >
             <div className="container mx-auto px-4">
                 <div className="max-w-2xl mx-auto text-center">
-                    <h2 className="text-3xl font-medium capitalize text-white mb-4">Our Services</h2>
+                    <h2 className="text-3xl font-medium capitalize text-white">Our Services</h2>
                 </div>
                 <CanvasRevealEffectDemo />
             </div>
