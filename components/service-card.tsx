@@ -78,7 +78,7 @@ const Card = ({
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             style={{ background: " rgba(0,0,0,0.8)" }}
-            className="border border-white group/canvas-card flex items-center justify-center max-w-sm w-full mx-auto p-4 h-[20rem] relative"
+            className="border border-white group/canvas-card flex items-center justify-center max-w-sm w-full mx-auto p-4 h-[10rem]  sm:h-[20rem] relative"
         >
             <Icon className="absolute h-6 w-6 -top-3 -left-3 text-white" />
             <Icon className="absolute h-6 w-6 -bottom-3 -left-3  text-white" />
@@ -97,27 +97,37 @@ const Card = ({
                 )}
             </AnimatePresence>
 
-            <div className="relative group w-[300px] h-[300px] overflow-hidden mx-auto rounded-xl">
+            <div
+                tabIndex={0}
+                className="relative group w-[300px] sm:h-[200px] sm:w-[200px] h-[300px] overflow-hidden mx-auto rounded-xl 
+             focus:outline-none"
+            >
 
-                {/* Default view: Title */}
-                <div className="absolute inset-0 flex items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-4">
+                {/* Title visible by default, hidden on hover/focus */}
+                <div className="absolute inset-0 flex items-center justify-center transition-all duration-300 
+                  group-hover:opacity-0 group-hover:translate-y-4 
+                  group-focus-within:opacity-0 group-focus-within:translate-y-4">
                     <h2 className="text-white text-xl font-semibold">{title}</h2>
                 </div>
 
-                {/* Hover view: Full content */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-white opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 px-4 text-center">
+                {/* Content shown on hover or focus */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white 
+                  opacity-0 translate-y-4 transition-all duration-300 
+                  group-hover:opacity-100 group-hover:translate-y-0 
+                  group-focus-within:opacity-100 group-focus-within:translate-y-0 
+                  px-4 text-center">
+
                     <h2 className="text-xl font-bold mb-2">{title}</h2>
                     <p className="text-sm leading-relaxed">
-                        Strategic guidance to travel LLMs <br /> for your business needs.<br />
-                        <br />
+                        Strategic guidance to travel LLMs <br /> for your business needs.<br /><br />
                         <li>Use Case Identification</li>
                         <li>Model Selection</li>
                         <li>Prompt Engineering</li>
                         <li>Evaluation & Benchmarking</li>
                     </p>
                 </div>
-
             </div>
+
 
         </div>
     );
