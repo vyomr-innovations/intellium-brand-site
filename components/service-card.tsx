@@ -78,7 +78,7 @@ const Card = ({
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             style={{ background: " rgba(0,0,0,0.8)" }}
-            className="border border-white group/canvas-card flex items-center justify-center max-w-sm w-full mx-auto p-4 h-[10rem]  sm:h-[20rem] relative"
+            className="border border-white group/canvas-card flex items-center justify-center max-w-sm w-full mx-auto p-4 h-[18rem]  sm:h-[20rem] relative"
         >
             <Icon className="absolute h-6 w-6 -top-3 -left-3 text-white" />
             <Icon className="absolute h-6 w-6 -bottom-3 -left-3  text-white" />
@@ -117,8 +117,8 @@ const Card = ({
                   group-focus-within:opacity-100 group-focus-within:translate-y-0 
                   px-4 text-center">
 
-                    <h2 className="text-xl font-bold mb-2">{title}</h2>
-                    <p className="text-sm leading-relaxed">
+                    <h2 className="text-sm sm:text-xl font-bold mb-2">{title}</h2>
+                    <p className="text-base sm:text-sm leading-relaxed">
                         Strategic guidance to travel LLMs <br /> for your business needs.<br /><br />
                         <li>Use Case Identification</li>
                         <li>Model Selection</li>
