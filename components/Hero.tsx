@@ -3,11 +3,11 @@ import React from "react";
 import { WavyBackground } from "./ui/wavy-background";
 export default function Hero() {
     return (
-        <WavyBackground  className="max-w-4xl mx-auto pb-40" backgroundImageUrl="/assets/images/wavy.png">
-            <h1 className="text-5xl mt-50 md:text-7xl font-bold text-white text-center">
+        <WavyBackground  id="hero" className="max-w-4xl mx-auto pb-40" backgroundImageUrl="/assets/images/wavy.png">
+            <h1 className="text-4xl md:px-0 px-5 mt-50 md:text-7xl font-bold text-white text-center">
                 Unlock the Power of LLMs with Intellium
             </h1>
-            <p className="text-2xl  mt-4 text-white  inter-var text-center">
+            <p className="md:text-2xl text-xl mt-4 text-white  inter-var text-center">
                 Your Partner for Large Language Model Solutions
             </p>
 

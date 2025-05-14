@@ -266,10 +266,10 @@ export function PlaceholdersAndVanishInput({
                     opacity: 0,
                   }}
                   transition={{
-                    duration: 0.3,
+                    duration: 0.5,
                     ease: "linear",
                   }}
-                  className="text-white text-base sm:text-base font-normal pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
+                  className="text-white  sm:text-base font-normal pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
                 >
                   {placeholders[currentPlaceholder]}
                 </motion.p>

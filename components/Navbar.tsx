@@ -13,7 +13,7 @@ export default function Navbar() {
         <header id="navbar-sticky" className="navbar">
             <div className="container">
                 <nav className="flex items-center justify-content-center w-full relative  z-50">
-                    <Link href="/" className="logo">
+                    <Link href="#hero" className="logo">
                         <h1 className="h2 text-white">Intellium</h1>
                     </Link>
 

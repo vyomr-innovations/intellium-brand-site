@@ -22,7 +22,7 @@ export function PlaceholdersAndVanishInputDemo() {
     }
     return (
         <div className="h-[20rem] bg-default-950/40 backdrop-blur-md flex flex-col justify-center  items-center px-4">
-            <h2 className="mb-10 sm:mb-20 text-5xl text-center sm:text-xl text-white">
+            <h2 className="mb-10 sm:mb-20 text-4xl md:text-5xl text-center sm:text-xl text-white">
                 Ask Intellium About LLMs
             </h2>
             <div className="w-full max-w-xl">
