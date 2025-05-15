@@ -72,7 +72,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
       <div
         ref={modalRef}
-        className="bg-white dark:bg-neutral-900 rounded-xl shadow-xl w-full max-w-md mx-4 z-[10000] overflow-hidden animate-in fade-in zoom-in duration-300"
+        className="bg-neutral-900 rounded-xl shadow-xl w-full max-w-md mx-4 z-[10000] overflow-hidden animate-in fade-in zoom-in duration-300"
       >
         <div className="relative p-6">
           <button

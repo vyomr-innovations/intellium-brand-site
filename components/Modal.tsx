@@ -5,7 +5,7 @@ import { ContactForm } from "./ContactModalForm"
 
 export function AnimatedModalDemo({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center justify-center">
+    <div className="bg-black flex items-center justify-center">
       <Modal>
         <ModalTrigger className="group/modal-btn">{children}</ModalTrigger>
         <ModalBody className="h-auto zIndex-[99999] absolute">
