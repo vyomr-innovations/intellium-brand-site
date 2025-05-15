@@ -43,16 +43,7 @@ const About = () => {
                             We&apos;re a team of passionate individuals dedicated to creating exceptional digital experiences that make a
                             difference.
                         </p>
-                        <motion.div
-                            className="mt-8"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2, duration: 0.5 }}
-                        >
-                            <button className="px-6 py-3 border rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium hover:shadow-lg transition-all duration-300">
-                                Learn More
-                            </button>
-                        </motion.div>
+                      
                     </motion.div>
                 </div>
             </div>
