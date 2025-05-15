@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/moving-border"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Send } from "lucide-react"
-
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 export function ContactForm() {
     const [formData, setFormData] = useState({
         name: "",
@@ -56,7 +57,7 @@ export function ContactForm() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">
+                    <label htmlFor="name" className="block text-sm font-medium text-white mb-1">
                         Name
                     </label>
                     <Input
@@ -73,7 +74,7 @@ export function ContactForm() {
                 </div>
 
                 <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">
+                    <label htmlFor="email" className="block text-sm font-medium text-white mb-1">
                         Email
                     </label>
                     <Input
@@ -87,9 +88,22 @@ export function ContactForm() {
                         className="w-full"
                     />
                 </div>
-
                 <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-1">
+                    <label htmlFor="email" className="block text-sm font-medium text-white mb-1">
+                        Phone No
+                    </label>
+                    <PhoneInput
+                        placeholder="Enter phone number"
+                        value={formData.email}
+                        defaultCountry="IN"
+                        required
+                        autoComplete="on"
+                        inputComponent={() => <Input />}
+                        name="phone"
+                        onChange={(value) => setFormData(prev => ({ ...prev, phone: value }))} />
+                </div>
+                <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-white mb-1">
                         Message
                     </label>
                     <Textarea

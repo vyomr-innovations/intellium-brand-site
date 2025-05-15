@@ -6,7 +6,7 @@ const About = () => {
             <BackgroundBeams className="absolute top-0 left-0 w-full h-full z-0" />
             <div className="relative z-10 text-center">
                 <h1 className="text-4xl md:text-7xl font-bold  text-white mb-8">
-                    About Our Company
+                    About US
                 </h1>
                 <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
                     We&apos;re a team of passionate individuals dedicated to creating exceptional digital experiences that make a
