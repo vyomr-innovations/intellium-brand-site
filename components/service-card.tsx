@@ -76,9 +76,9 @@ const Card = ({
     return (
         <div className="relative shadow-[0_5px_55px_rgba(8,_112,_184,_0.7)] border border-white group/canvas-card flex items-center justify-center max-w-sm w-full mx-auto  h-[18rem]  sm:h-[20rem] ">
             <Icon className="absolute z-50 h-6 w-6 -top-3 -left-3 text-white" />
-            <Icon className="absolute h-6 w-6 -bottom-3 -left-3  text-white" />
-            <Icon className="absolute h-6 w-6 -top-3 -right-3  text-white" />
-            <Icon className="absolute h-6 w-6 -bottom-3 -right-3  text-white" />
+            <Icon className="absolute z-50 h-6 w-6 -bottom-3 -left-3  text-white" />
+            <Icon className="absolute z-50 h-6 w-6 -top-3 -right-3  text-white" />
+            <Icon className="absolute z-50 h-6 w-6 -bottom-3 -right-3  text-white" />
             <BackgroundBeamsWithCollision className="bg-transparent ">
                 <div
                     onMouseEnter={() => setHovered(true)}

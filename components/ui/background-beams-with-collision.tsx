@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import { cn } from "@/lib/utils";
@@ -16,50 +17,50 @@ export const BackgroundBeamsWithCollision = ({
 
   const beams = [
     {
-      initialX: 10,
-      translateX: 10,
+      initialX: "10%",
+      translateX: "10%",
       duration: 7,
       repeatDelay: 3,
       delay: 2,
     },
     {
-      initialX: 600,
-      translateX: 600,
+      initialX: "30%",
+      translateX: "30%",
       duration: 3,
       repeatDelay: 3,
       delay: 4,
     },
     {
-      initialX: 100,
-      translateX: 100,
+      initialX: "45%",
+      translateX: "45%",
       duration: 7,
       repeatDelay: 7,
       className: "h-6",
     },
     {
-      initialX: 400,
-      translateX: 400,
+      initialX: "60%",
+      translateX: "60%",
       duration: 5,
       repeatDelay: 14,
       delay: 4,
     },
     {
-      initialX: 800,
-      translateX: 800,
+      initialX: "75%",
+      translateX: "75%",
       duration: 11,
       repeatDelay: 2,
       className: "h-20",
     },
     {
-      initialX: 1000,
-      translateX: 1000,
+      initialX: "85%",
+      translateX: "85%",
       duration: 4,
       repeatDelay: 2,
       className: "h-12",
     },
     {
-      initialX: 1200,
-      translateX: 1200,
+      initialX: "95%",
+      translateX: "95%",
       duration: 6,
       repeatDelay: 4,
       delay: 2,
@@ -72,7 +73,6 @@ export const BackgroundBeamsWithCollision = ({
       ref={parentRef}
       className={cn(
         "min-h-[200px] md:min-h-[12rem] bg-transparent border-0 relative flex items-center w-full justify-center overflow-hidden",
-        // h-screen if you want bigger
         className
       )}
     >
@@ -104,8 +104,8 @@ const CollisionMechanism = React.forwardRef<
     containerRef: React.RefObject<HTMLDivElement>;
     parentRef: React.RefObject<HTMLDivElement>;
     beamOptions?: {
-      initialX?: number;
-      translateX?: number;
+      initialX?: string | number;
+      translateX?: string | number;
       initialY?: number;
       translateY?: number;
       rotate?: number;
@@ -159,7 +159,6 @@ const CollisionMechanism = React.forwardRef<
     const animationInterval = setInterval(checkCollision, 50);
 
     return () => clearInterval(animationInterval);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cycleCollisionDetected, containerRef]);
 
   useEffect(() => {
@@ -183,13 +182,13 @@ const CollisionMechanism = React.forwardRef<
         animate="animate"
         initial={{
           translateY: beamOptions.initialY || "-200px",
-          translateX: beamOptions.initialX || "0px",
+          left: beamOptions.initialX || "0%",
           rotate: beamOptions.rotate || 0,
         }}
         variants={{
           animate: {
             translateY: beamOptions.translateY || "1800px",
-            translateX: beamOptions.translateX || "0px",
+            left: beamOptions.translateX || "0%",
             rotate: beamOptions.rotate || 0,
           },
         }}
@@ -202,7 +201,7 @@ const CollisionMechanism = React.forwardRef<
           repeatDelay: beamOptions.repeatDelay || 0,
         }}
         className={cn(
-          "absolute left-0 top-20 m-auto h-14 w-px rounded-full bg-gradient-to-t from-indigo-500 via-purple-500 to-transparent",
+          "absolute top-20 m-auto h-14 w-px rounded-full bg-gradient-to-t from-indigo-500 via-purple-500 to-transparent",
           beamOptions.className
         )}
       />
