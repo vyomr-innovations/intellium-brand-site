@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { X } from "lucide-react"
 import { ContactForm } from "./ContactModalForm"
-import { Button } from "./ui/button"
 
 interface ContactModalProps {
   isOpen: boolean
@@ -88,15 +87,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
           <ContactForm />
         </div>
 
-        <div className="bg-gray-50 dark:bg-neutral-800 p-4 flex justify-end">
-          <Button
-            onClick={onClose}
-            variant="default"
-            className="px-4 py-2  hover:bg-gray-300 text-black bg-white dark:hover:bg-gray-600 rounded-md text-sm transition-colors"
-          >
-            Close
-          </Button>
-        </div>
+        
       </div>
     </div>,
     document.body,

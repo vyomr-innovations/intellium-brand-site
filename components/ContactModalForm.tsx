@@ -95,10 +95,10 @@ export function ContactForm() {
                     <PhoneInput
                         placeholder="Enter phone number"
                         value={formData.email}
-                        defaultCountry="IN"
                         required
                         autoComplete="on"
-                        inputComponent={() => <Input />}
+                        // inputComponent={() => <Input />}
+                        className="bg-transparent w-full"
                         name="phone"
                         onChange={(value) => setFormData(prev => ({ ...prev, phone: value }))} />
                 </div>
