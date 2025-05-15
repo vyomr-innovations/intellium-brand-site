@@ -74,64 +74,67 @@ const Card = ({
 }) => {
     const [hovered, setHovered] = React.useState(false);
     return (
-        <BackgroundBeamsWithCollision className="bg-transparent ">
-            <div
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-                style={{ background: " rgba(0,0,0,0.8)" }}
-                className="shadow-[0_5px_55px_rgba(8,_112,_184,_0.7)] border border-white group/canvas-card flex items-center justify-center max-w-sm w-full mx-auto p-4 h-[18rem]  sm:h-[20rem] relative"
-            >
-                <Icon className="absolute h-6 w-6 -top-3 -left-3 text-white" />
-                <Icon className="absolute h-6 w-6 -bottom-3 -left-3  text-white" />
-                <Icon className="absolute h-6 w-6 -top-3 -right-3  text-white" />
-                <Icon className="absolute h-6 w-6 -bottom-3 -right-3  text-white" />
-
-                <AnimatePresence>
-                    {hovered && (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="h-full w-full absolute inset-0"
-                        >
-                            {children}
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-
+        <div className="relative shadow-[0_5px_55px_rgba(8,_112,_184,_0.7)] border border-white group/canvas-card flex items-center justify-center max-w-sm w-full mx-auto  h-[18rem]  sm:h-[20rem] ">
+            <Icon className="absolute z-50 h-6 w-6 -top-3 -left-3 text-white" />
+            <Icon className="absolute h-6 w-6 -bottom-3 -left-3  text-white" />
+            <Icon className="absolute h-6 w-6 -top-3 -right-3  text-white" />
+            <Icon className="absolute h-6 w-6 -bottom-3 -right-3  text-white" />
+            <BackgroundBeamsWithCollision className="bg-transparent ">
                 <div
-                    tabIndex={0}
-                    className="relative group w-[300px] sm:h-[200px] sm:w-[200px] h-[300px] overflow-hidden mx-auto rounded-xl 
-             focus:outline-none"
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                    style={{ background: " rgba(0,0,0,0.8)" }}
+                    className="flex items-center justify-center max-w-sm w-full mx-auto  h-[17rem]  sm:h-[19.6rem]"
                 >
 
-                    {/* Title visible by default, hidden on hover/focus */}
-                    <div className="absolute inset-0 flex items-center justify-center transition-all duration-300 
+
+                    <AnimatePresence>
+                        {hovered && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                className="h-full w-full absolute inset-0"
+                            >
+                                {children}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
+                    <div
+                        tabIndex={0}
+                        className="relative group w-[300px] sm:h-[200px] sm:w-[200px] h-[300px] overflow-hidden mx-auto rounded-xl 
+             focus:outline-none"
+                    >
+
+                        {/* Title visible by default, hidden on hover/focus */}
+                        <div className="absolute inset-0 flex items-center justify-center transition-all duration-300 
                   group-hover:opacity-0 group-hover:translate-y-4 
                   group-focus-within:opacity-0 group-focus-within:translate-y-4  bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500">
-                        <span className="text-white text-xl font-semibold ">{title}</span>
-                    </div>
+                            <span className="text-white text-xl font-semibold ">{title}</span>
+                        </div>
 
-                    {/* Content shown on hover or focus */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-white 
+                        {/* Content shown on hover or focus */}
+                        <div className="absolute inset-0 flex flex-col items-center justify-center text-white 
                   opacity-0 translate-y-4 transition-all duration-300 
                   group-hover:opacity-100 group-hover:translate-y-0 
                   group-focus-within:opacity-100 group-focus-within:translate-y-0 
                   px-4 text-center">
 
-                        <h2 className="text-base sm:text-xl font-bold mb-2">{title}</h2>
-                        <p className="text-sm sm:text-base leading-relaxed">
-                            Strategic guidance to travel LLMs <br /> for your business needs.<br /><br />
-                            <li>Use Case Identification</li>
-                            <li>Model Selection</li>
-                            <li>Prompt Engineering</li>
-                            <li>Evaluation & Benchmarking</li>
-                        </p>
+                            <h2 className="text-base sm:text-xl font-bold mb-2">{title}</h2>
+                            <p className="text-sm sm:text-base leading-relaxed">
+                                Strategic guidance to travel LLMs <br /> for your business needs.<br /><br />
+                                <li>Use Case Identification</li>
+                                <li>Model Selection</li>
+                                <li>Prompt Engineering</li>
+                                <li>Evaluation & Benchmarking</li>
+                            </p>
+                        </div>
                     </div>
+
+
                 </div>
-
-
-            </div>
-        </BackgroundBeamsWithCollision>
+            </BackgroundBeamsWithCollision>
+        </div>
     );
 };
 
