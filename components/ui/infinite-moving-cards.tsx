@@ -22,12 +22,11 @@ export function InfiniteMovingCards({
 }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const scrollerRef = useRef<HTMLUListElement>(null)
-
   const [start, setStart] = useState(false)
 
   useEffect(() => {
     addAnimation()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [])
 
   const getSpeed = () => {
@@ -37,20 +36,35 @@ export function InfiniteMovingCards({
       case "normal":
         return 50
       case "slow":
-        return 80
+        return 400
     }
   }
 
   const addAnimation = () => {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children)
-
+      
+      // Create a duplicate set of items for seamless looping
       scrollerContent.forEach((item) => {
         const duplicatedItem = item.cloneNode(true)
         if (scrollerRef.current) {
           scrollerRef.current.appendChild(duplicatedItem)
         }
       })
+
+      // Check if we need to add more copies based on container width
+// Remove unused scrollerWidth variable since it's not needed
+      const containerWidth = containerRef.current.offsetWidth
+
+      // Add more copies if needed to ensure continuous scrolling
+      while (scrollerRef.current.scrollWidth < containerWidth * 3) {
+        scrollerContent.forEach((item) => {
+          const duplicatedItem = item.cloneNode(true)
+          if (scrollerRef.current) {
+            scrollerRef.current.appendChild(duplicatedItem)
+          }
+        })
+      }
 
       setStart(true)
     }
@@ -64,7 +78,7 @@ export function InfiniteMovingCards({
         ref={scrollerRef}
         className={cn(
           "flex min-w-full shrink-0 gap-12 py-4 w-max flex-nowrap",
-          start && "animate-scroll",
+          start && "animate-[scroll_linear_infinite]",
           pauseOnHover && "hover:[animation-play-state:paused]",
           direction === "right" ? "justify-end" : "justify-start",
         )}
@@ -77,7 +91,7 @@ export function InfiniteMovingCards({
           <li className="w-[150px] md:w-[180px] flex items-center justify-center relative flex-shrink-0 px-4" key={idx}>
             <div className="relative h-12 w-full">
               <Image
-                src={item.logo || "/placeholder.svg"}
+                src={item.logo}
                 alt={item.name}
                 fill
                 unoptimized

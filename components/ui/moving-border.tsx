@@ -20,6 +20,7 @@ export function Button({
   duration,
   className,
   disabled = false,
+  onClick,
   ...otherProps
 }: {
   borderRadius?: string;
@@ -30,6 +31,7 @@ export function Button({
   duration?: number;
   className?: string;
   disabled?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   [key: string]: any;
 }) {
   return (
@@ -43,6 +45,7 @@ export function Button({
         borderRadius: borderRadius,
       }}
       disabled={disabled}
+      onClick={onClick}
       {...otherProps}
     >
       <div
