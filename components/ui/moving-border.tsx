@@ -19,6 +19,7 @@ export function Button({
   borderClassName,
   duration,
   className,
+  disabled = false,
   ...otherProps
 }: {
   borderRadius?: string;
@@ -28,6 +29,7 @@ export function Button({
   borderClassName?: string;
   duration?: number;
   className?: string;
+  disabled?: boolean;
   [key: string]: any;
 }) {
   return (
@@ -35,10 +37,12 @@ export function Button({
       className={cn(
         "relative h-16 w-40 overflow-hidden bg-transparent p-[1px] text-xl",
         containerClassName,
+        disabled && "cursor-not-allowed opacity-50"
       )}
       style={{
         borderRadius: borderRadius,
       }}
+      disabled={disabled}
       {...otherProps}
     >
       <div
@@ -50,6 +54,7 @@ export function Button({
             className={cn(
               "h-20 w-20 bg-[radial-gradient(#0ea5e9_40%,transparent_60%)] opacity-[0.8]",
               borderClassName,
+              disabled && "opacity-30"
             )}
           />
         </MovingBorder>
@@ -59,6 +64,7 @@ export function Button({
         className={cn(
           "relative flex h-full w-full items-center justify-center border border-slate-800 bg-slate-900/[0.8] text-sm text-white antialiased backdrop-blur-xl",
           className,
+          disabled && "text-slate-400"
         )}
         style={{
           borderRadius: `calc(${borderRadius} * 0.96)`,

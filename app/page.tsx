@@ -10,9 +10,9 @@ export default function Home() {
     <main>
       <Navigation />
       <Hero />
-      <TechPartner />
       <PlaceholdersAndVanishInputDemo />
       <Tools />
+      <TechPartner />
       <About />
     </main>
   );

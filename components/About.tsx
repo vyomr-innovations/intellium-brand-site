@@ -2,7 +2,7 @@ import React from 'react'
 import { BackgroundBeams } from './ui/background-beams'
 const About = () => {
     return (
-        <section id="about" className="bg-[rgba(0,0,0,0.8)] backdrop-blur-md relative h-[25rem] flex flex-col items-center justify-center overflow-hidden px-4">
+        <section id="about" className="bg-[rgba(0,0,0,0.5)] backdrop-blur-md relative h-[25rem] flex flex-col items-center justify-center overflow-hidden px-4">
             <BackgroundBeams className="absolute top-0 left-0 w-full h-full z-0" />
             <div className="relative z-10 text-center">
                 <h1 className="text-4xl md:text-7xl font-bold  text-white mb-8">
