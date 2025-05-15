@@ -84,7 +84,7 @@ const Card = ({
                     onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}
                     style={{ background: " rgba(0,0,0,0.8)" }}
-                    className="flex items-center justify-center max-w-sm w-full mx-auto  h-[17rem]  sm:h-[19.6rem]"
+                    className="flex items-center justify-center max-w-sm w-full mx-auto  h-[17.7rem]  sm:h-[19.6rem]"
                 >
 
 
