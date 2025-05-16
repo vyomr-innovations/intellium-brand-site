@@ -40,10 +40,13 @@ const About = () => {
                             About US
                         </h1>
                         <p className="text-lg md:text-xl text-white/80 max-w-2xl">
-                            We&apos;re a team of passionate individuals dedicated to creating exceptional digital experiences that make a
-                            difference.
+                            Intellium is a team of experts dedicated to helping businesses harness the transformative power of Large Language Models (LLMs). Founded by IIT Bombay graduates, we combine deep AI expertise with practical business acumen to deliver tailored solutions that drive innovation, efficiency, and growth.
                         </p>
+                        <br />
+                        <p className="text-lg md:text-xl text-white/80 max-w-2xl">
 
+                            Our mission is to empower organizations to leverage LLMs to solve complex challenges, automate processes, and create new opportunities.
+                        </p>
                     </motion.div>
                 </div>
             </div>
