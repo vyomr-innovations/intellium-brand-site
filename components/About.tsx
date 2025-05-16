@@ -14,15 +14,15 @@ const About = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
 
                     {/* Left side - Image */}
-                    <CardContainer className="inter-var">
-                        <CardBody className="shadow-[0_5px_55px_rgba(8,_112,_184,_0.7)] backdrop-blur-3xl bg-[rgba(0,0,0,0.3)]  relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1]  border-white max-w-sm h-auto rounded-xl p-6">
+                    <CardContainer className="inter-var  bg-transparent  ">
+                        <CardBody className=" bg-transparent relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1]  border-white max-w-sm h-auto rounded-xl p-6">
                             <CardItem
                                 translateZ="100"
                                 className="w-full mt-4"
                             >
                                 <img
                                     src="/about_us_logo.png" // Replace with your image path
-                                    className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                                    className="h-60 shadow-[0_5px_55px_rgba(8,_112,_184,_0.7)] w-full object-cover rounded-xl group-hover/card:shadow-xl"
                                     alt="About Us"
                                 />
                             </CardItem>
