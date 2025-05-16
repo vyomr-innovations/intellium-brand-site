@@ -15,7 +15,7 @@ const About = () => {
 
                     {/* Left side - Image */}
                     <CardContainer className="inter-var">
-                        <CardBody className="bg-gray-900 relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1]  border-white max-w-sm h-auto rounded-xl p-6">
+                        <CardBody className="shadow-[0_5px_55px_rgba(8,_112,_184,_0.7)] bg-[rgba(0,0,0,0.8)]  relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1]  border-white max-w-sm h-auto rounded-xl p-6">
                             <CardItem
                                 translateZ="100"
                                 className="w-full mt-4"
@@ -43,7 +43,7 @@ const About = () => {
                             We&apos;re a team of passionate individuals dedicated to creating exceptional digital experiences that make a
                             difference.
                         </p>
-                      
+
                     </motion.div>
                 </div>
             </div>
