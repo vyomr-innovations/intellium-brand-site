@@ -21,7 +21,7 @@ const About = () => {
                                 className="w-full mt-4"
                             >
                                 <img
-                                    src="https://img.freepik.com/premium-vector/llm-logo-llm-letter-llm-letter-logo-design-initials-llm-logo-linked-with-circle-uppercase-monogram-logo-llm-typography-technology-business-real-estate-brand_229120-65361.jpg" // Replace with your image path
+                                    src="/about_us_logo.png" // Replace with your image path
                                     className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
                                     alt="About Us"
                                 />
