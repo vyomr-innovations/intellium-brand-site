@@ -117,7 +117,7 @@ export function ContactForm() {
                     />
                 </div>
 
-                <Button borderRadius="10rem" containerClassName="w-100 my-3" type="submit" className="bg-[#000000]   text-white border-1 border-purple-500 hover:bg-purple-500 hover:text-white transition-all duration-300 ease-in-out flex w-full font-semibold" disabled={isSubmitting}>
+                <Button borderRadius="10rem" containerClassName="w-full my-3" type="submit" className="bg-[#000000]   text-white border-1 border-purple-500 hover:bg-purple-500 hover:text-white transition-all duration-300 ease-in-out flex w-full font-semibold" disabled={isSubmitting}>
                     {isSubmitting ? (
                         <span className="flex items-center justify-center">
                             <svg
