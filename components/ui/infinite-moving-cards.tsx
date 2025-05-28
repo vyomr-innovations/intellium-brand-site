@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
 import { useEffect, useState, useRef } from "react"
@@ -26,7 +27,11 @@ export function InfiniteMovingCards({
 
   useEffect(() => {
     addAnimation()
-     
+    // Add resize listener to handle window resizing
+    window.addEventListener('resize', addAnimation)
+    return () => {
+      window.removeEventListener('resize', addAnimation)
+    }
   }, [])
 
   const getSpeed = () => {
@@ -36,34 +41,39 @@ export function InfiniteMovingCards({
       case "normal":
         return 50
       case "slow":
-        return 400
+        return 200
     }
   }
 
   const addAnimation = () => {
     if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children)
+      // Reset the scroller content
+      scrollerRef.current.innerHTML = ''
       
-      // Create a duplicate set of items for seamless looping
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true)
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem)
-        }
+      // Create a wrapper for the original items
+      const originalList = document.createElement('div')
+      originalList.className = 'flex'
+      
+      // Add the original items first
+      items.forEach((item) => {
+        const li = document.createElement('li')
+        li.className = "w-[150px] md:w-[180px] flex items-center justify-center relative flex-shrink-0 px-4"
+        li.innerHTML = `
+          <div class="relative h-12 w-full">
+            <img
+              src="${item.logo}"
+              alt="${item.name}"
+              class="object-contain filter brightness-0 invert opacity-80 hover:opacity-100 transition-opacity duration-300 absolute inset-0 w-full h-full"
+            />
+          </div>
+        `
+        originalList.appendChild(li)
       })
 
-      // Check if we need to add more copies based on container width
-// Remove unused scrollerWidth variable since it's not needed
-      const containerWidth = containerRef.current.offsetWidth
-
-      // Add more copies if needed to ensure continuous scrolling
-      while (scrollerRef.current.scrollWidth < containerWidth * 3) {
-        scrollerContent.forEach((item) => {
-          const duplicatedItem = item.cloneNode(true)
-          if (scrollerRef.current) {
-            scrollerRef.current.appendChild(duplicatedItem)
-          }
-        })
+      // Add multiple sets of the original content
+      for (let i = 0; i < 4; i++) {
+        const clonedList = originalList.cloneNode(true)
+        scrollerRef.current.appendChild(clonedList)
       }
 
       setStart(true)
@@ -78,13 +88,15 @@ export function InfiniteMovingCards({
         ref={scrollerRef}
         className={cn(
           "flex min-w-full shrink-0 gap-12 py-4 w-max flex-nowrap",
-          start && "animate-[scroll_linear_infinite]",
+          start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]",
           direction === "right" ? "justify-end" : "justify-start",
         )}
         style={{
           animationDuration: `${speedValue}s`,
           animationDirection: direction === "right" ? "reverse" : "normal",
+          animationIterationCount: "infinite",
+          animationTimingFunction: "linear"
         }}
       >
         {items.map((item, idx) => (
