@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import { useState } from "react"
@@ -18,8 +19,9 @@ export default function Navbar() {
             <header id="navbar-sticky" className="navbar">
                 <div className="container">
                     <nav className="flex items-center justify-content-center w-full relative z-50">
-                        <Link href="#hero" className="logo">
-                            <h1 className="h2 text-white">Intellium</h1>
+                        <Link href="#hero" className="logo flex flex-row">
+                            <img className="h-auto w-30" style={{ objectFit: "scale-down" }} src="/intellium.png" alt="logo" />
+                            {/* <h1 className="h2 text-white">Intellium</h1> */}
                         </Link>
 
                         <div className="lg:hidden flex items-center ms-auto px-2.5">
@@ -56,6 +58,10 @@ export default function Navbar() {
                                 </li>
                             </ul>
                         </div>
+                        <Link href="#hero" className="logo flex flex-row ">
+                            <img className="h-auto w-30 opacity-0" style={{ objectFit: "scale-down" }} src="/intellium.png" alt="logo" />
+                            {/* <h1 className="h2 text-white">Intellium</h1> */}
+                        </Link>
                     </nav>
                 </div>
             </header>

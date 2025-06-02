@@ -10,8 +10,8 @@ export default function Hero() {
     const closeModal = () => setIsModalOpen(false)
     return (
         <WavyBackground id="hero" className="max-w-4xl mx-auto pb-40" backgroundImageUrl="/assets/images/wavy.png">
-            <h1 className="text-4xl md:px-0 px-5 mt-50 md:text-7xl font-bold text-white text-center">
-                Unlock the Power of LLMs with Intellium
+            <h1 style={{ fontSize: 68 }} className="md:px-0 px-5 mt-50 md:text-7xl font-bold text-white text-center">
+                Unlock the Power of LLMs with <span style={{ fontWeight: "500", fontStyle: "italic" }}>Intellium</span>
             </h1>
             <p className="md:text-2xl text-xl mt-4 text-white  inter-var text-center">
                 Your Partner for Large Language Model Solutions
