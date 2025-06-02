@@ -8,10 +8,6 @@ const partners = [
         logo: "https://upload.wikimedia.org/wikipedia/commons/1/13/ChatGPT-Logo.png",
     },
     {
-        name: "Roga AI",
-        logo: "https://raw.githubusercontent.com/raga-ai-hub/raga-llm-hub/main/docs/assets/logo-lg_black.png",
-    },
-    {
         name: "DeepSeek",
         logo: "./deepseeklogo.png"
     },
@@ -22,6 +18,22 @@ const partners = [
     {
         name: "Anthropic AI",
         logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Anthropic_logo.svg/1200px-Anthropic_logo.svg.png"
+    },
+    {
+        name: "Pinecone",
+        logo: "./pinecone_icon.png"
+    },
+    {
+        name: "LangChain",
+        logo: "./langchan.png"
+    },
+    {
+        name: "Llama",
+        logo: "./llama_icon.png"
+    },
+    {
+        name: "Google Gemini Veo 3",
+        logo: "./gemini-veo.png"
     }
 ];
 
