@@ -20,7 +20,7 @@ export default function Navbar() {
                 <div className="container">
                     <nav className="flex items-center justify-content-center w-full relative z-50">
                         <Link href="#hero" className="logo flex flex-row">
-                            <img className="h-auto w-30" style={{ objectFit: "scale-down" }} src="/intellium.png" alt="logo" />
+                            <img className="h-auto w-30" style={{ objectFit: "scale-down" }} src="./intellium.png" alt="logo" />
                             {/* <h1 className="h2 text-white">Intellium</h1> */}
                         </Link>
 
