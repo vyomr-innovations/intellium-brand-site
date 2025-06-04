@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { X } from "lucide-react"
-import { ContactForm } from "./ContactModalForm"
+import { ContactForm } from "../components/ContactForm"
 
 interface ContactModalProps {
   isOpen: boolean

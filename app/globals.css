@@ -2,8 +2,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@tailwind base;
-@tailwind components;
+@import "tailwindcss/preflight";
 @tailwind utilities;
 
 @import "tailwindcss";
@@ -16,23 +15,23 @@
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
   @keyframes marquee {
-  from {
-    transform: translateX(0);
+    from {
+      transform: translateX(0);
     }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
     }
   }
   @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
+    from {
+      transform: translateY(0);
     }
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
     }
   }
 }
-html{
+html {
   scroll-behavior: smooth;
 }
 body {
@@ -198,9 +197,13 @@ body {
     @apply bg-background text-foreground;
   }
 }
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme inline {
+  --shadow-input: 0px 2px 3px -1px rgba(0, 0, 0, 0.1),
+    0px 1px 0px 0px rgba(25, 28, 33, 0.02),
+    0px 0px 0px 1px rgba(25, 28, 33, 0.08);
+}
 
 @layer base {
   :root {
@@ -279,8 +282,15 @@ body {
 .moving-border {
   --border-size: 2px;
   --border-angle: 0deg;
-  background-image: conic-gradient(from var(--border-angle), transparent 0%, #08c3fc 10%, #08c3fc 40%, transparent 50%);
-  background-size: calc(100% + var(--border-size) * 2) calc(100% + var(--border-size) * 2);
+  background-image: conic-gradient(
+    from var(--border-angle),
+    transparent 0%,
+    #08c3fc 10%,
+    #08c3fc 40%,
+    transparent 50%
+  );
+  background-size: calc(100% + var(--border-size) * 2)
+    calc(100% + var(--border-size) * 2);
   background-position: center;
   animation: bg-spin 3s linear infinite;
 }
@@ -396,6 +406,6 @@ body {
   }
 }
 
-input.PhoneInputInput{
+input.PhoneInputInput {
   @apply bg-transparent border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-sm px-3 py-2;
 }

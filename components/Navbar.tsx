@@ -16,11 +16,11 @@ export default function Navbar() {
 
     return (
         <>
-            <header id="navbar-sticky" className="navbar">
+            <header id="navbar-sticky" className="navbar fixed top-0 w-full">
                 <div className="container">
                     <nav className="flex items-center justify-content-center w-full relative z-50">
                         <Link href="#hero" className="logo flex flex-row">
-                            <img className="h-auto w-30" style={{ objectFit: "scale-down" }} src="https://adn.nestortech.io/api/va/6760306e5bb856bae7716ca8/intellium_image/DEV/web" alt="logo" />
+                            <img className="h-auto w-30" style={{ objectFit: "scale-down" }} src="./intellium_white.png" alt="logo" />
                             {/* <h1 className="h2 text-white">Intellium</h1> */}
                         </Link>
 
