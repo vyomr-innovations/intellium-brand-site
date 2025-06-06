@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button } from "../components/ui/moving-border";
 import { WavyBackground } from "./ui/wavy-background";
 // import { ContactModal } from "./ContactModal";
@@ -7,46 +7,6 @@ import { WavyBackground } from "./ui/wavy-background";
 import { useRouter } from "next/navigation";
 import { MorphingText } from "./magicui/morphing-text";
 
-
-
-const MyMorphingText = ({ texts }: { texts: string[] }) => {
-    const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setIndex((prev) => (prev + 1) % texts.length);
-        }, 2000);
-        return () => clearInterval(interval);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    return (
-        <div
-            style={{
-                position: "relative",
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-            }}
-        >
-            {texts.map((text, i) => (
-                <span
-                    key={i}
-                    style={{
-                        position: "absolute",
-                        opacity: i === index ? 1 : 0,
-                        transition: "opacity 0.5s ease-in-out",
-                        whiteSpace: "nowrap",
-                    }}
-                >
-                    {text}
-                </span>
-            ))}
-        </div>
-    );
-};
 
 export default function Hero() {
     // const [isModalOpen, setIsModalOpen] = useState(false)
