@@ -140,12 +140,11 @@ export function ContactForm() {
                                         <MapPin className="h-5 w-5 text-cyan-400 mt-1" />
                                         <div>
                                             <h3 className="text-white font-medium">Our Location</h3>
-                                            <p className="text-slate-400 mt-1">
-                                                123, New york city
-                                                <br />
-                                                Lane 1, Nyc
-                                                <br />
-                                                United States
+                                            <p className="text-slate-400 mt-1 text-left leading-relaxed">
+                                                A 1208,<br />
+                                                Kanakia Silicon Valley,<br />
+                                                Powai, Mumbai - 400076,<br />
+                                                Maharashtra, India.
                                             </p>
                                         </div>
                                     </div>
@@ -165,7 +164,7 @@ export function ContactForm() {
                                 </div>
                                 <div className="space-y-6">
                                     <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d482632.15259832365!2d72.54926045262282!3d19.082911487440562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1749201954716!5m2!1sen!2sin"
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.757462162052!2d72.91588767387617!3d19.118293150646007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c7e72ead5b7d%3A0x19c579c8a3f32a1!2sKanakia%20Silicon%20Valley!5e0!3m2!1sen!2sin!4v1749211744447!5m2!1sen!2sin"
                                         loading="lazy"
                                         referrerPolicy="no-referrer-when-downgrade"
                                         className="w-full h-48 rounded-lg border border-slate-700/50"
