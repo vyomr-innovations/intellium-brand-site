@@ -43,7 +43,7 @@ export function PlaceholdersAndVanishInput({
       }
       document.removeEventListener("visibilitychange", handleVisibilityChange)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [placeholders])
 
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -269,7 +269,7 @@ export function PlaceholdersAndVanishInput({
                     duration: 0.5,
                     ease: "linear",
                   }}
-                  className="text-white  sm:text-base font-normal pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
+                  className="text-white text-center  sm:text-base font-normal   w-[calc(100%-2rem)] truncate"
                 >
                   {placeholders[currentPlaceholder]}
                 </motion.p>

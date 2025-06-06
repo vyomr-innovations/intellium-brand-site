@@ -36,9 +36,9 @@ const About = () => {
                         transition={{ duration: 0.8 }}
                         className="text-left"
                     >
-                        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                        <h2 className="mb-10 sm:mb-20 text-4xl md:text-5xl  sm:text-xl text-white">
                             About US
-                        </h1>
+                        </h2>
                         <p className="text-lg md:text-xl text-white/80 max-w-2xl">
                             Intellium is a team of experts dedicated to helping businesses harness the transformative power of Large Language Models (LLMs). Founded by IIT Bombay graduates, we combine deep AI expertise with practical business acumen to deliver tailored solutions that drive innovation, efficiency, and growth.
                         </p>

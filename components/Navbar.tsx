@@ -4,22 +4,19 @@
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import Link from "next/link"
-import { ContactModal } from "./ContactModal"
 import "@/public/assets/css/style.min.css"
+import { useRouter } from "next/navigation"
 
 export default function Navbar() {
+    const navigate = useRouter()
     const [isOpen, setIsOpen] = useState(false)
-    const [isModalOpen, setIsModalOpen] = useState(false)
-
-    const openModal = () => setIsModalOpen(true)
-    const closeModal = () => setIsModalOpen(false)
 
     return (
         <>
             <header id="navbar-sticky" className="navbar fixed top-0 w-full">
                 <div className="container">
                     <nav className="flex items-center justify-content-center w-full relative z-50">
-                        <Link href="#hero" className="logo flex flex-row">
+                        <Link href="/" className="logo flex flex-row">
                             <img className="h-auto w-30" style={{ objectFit: "scale-down" }} src="./intellium_white.png" alt="logo" />
                             {/* <h1 className="h2 text-white">Intellium</h1> */}
                         </Link>
@@ -52,22 +49,19 @@ export default function Navbar() {
                                     </a>
                                 </li>
                                 <li className="nav-item">
-                                    <button className="nav-link" onClick={openModal} type="button">
+                                    <button className="nav-link" onClick={()=>navigate.push("/contact")} type="button">
                                         Contact
                                     </button>
                                 </li>
                             </ul>
                         </div>
-                        <Link href="#hero" className="logo flex flex-row ">
+                        <Link href="#hero" id="secondary_logo_hide" className="logo md:flex flex-row">
                             <img className="h-auto w-30 opacity-0" style={{ objectFit: "scale-down" }} src="/intellium.png" alt="logo" />
                             {/* <h1 className="h2 text-white">Intellium</h1> */}
                         </Link>
                     </nav>
                 </div>
             </header>
-
-            {/* Modal is rendered directly with createPortal */}
-            <ContactModal isOpen={isModalOpen} onClose={closeModal} />
         </>
     )
 }
