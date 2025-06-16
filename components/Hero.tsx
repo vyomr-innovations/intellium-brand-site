@@ -6,8 +6,8 @@ import { WavyBackground } from "./ui/wavy-background";
 // import { WordRotate } from "@/components/magicui/word-rotate";
 import { useRouter } from "next/navigation";
 import { MorphingText } from "./magicui/morphing-text";
-
-
+// import { AuroraText } from "@/components/magicui/aurora-text";
+// 
 export default function Hero() {
     // const [isModalOpen, setIsModalOpen] = useState(false)
     const navigate = useRouter()
@@ -28,7 +28,7 @@ export default function Hero() {
                         position: "relative",
                     }}
                 >
-                    <MorphingText className="mt-0 mb-0" texts={["Power", "Value", "Intelligence"]} />
+                    <MorphingText className="mt-0 mb-0 " texts={["Power", "Value", "Intelligence"]} />
                 </div>
 
                 <h1 className="text-[32px] md:text-[48px] font-medium">
