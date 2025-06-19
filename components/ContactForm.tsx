@@ -1,27 +1,62 @@
 "use client"
-import type React from "react"
-
+import React, { useState } from "react"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
-import "react-phone-number-input/style.css"
 import { MapPin, Mail } from "lucide-react"
 import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern"
 
 export function ContactForm() {
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const [alert, setAlert] = useState<{
+        type: "success" | "error"
+        message: string
+    } | null>(null)
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
+
         const data = {
             firstName: formData.get("firstname"),
             lastName: formData.get("lastname"),
             email: formData.get("email"),
-            company: formData.get("company"),
             message: formData.get("message"),
         }
-        console.log("Contact form submitted:", data)
-        // Here you would typically send the data to your backend
+
+        try {
+            const response = await fetch(
+                "https://script.google.com/macros/s/AKfycbxZlly8GL6TLnASUSiZC199GHMwm6pxy0OjbSHDl6a14PyUx1UitmwO4v7ZmB9eBGtkaA/exec",
+                {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            )
+
+            if (response.ok) {
+                setAlert({
+                    type: "success",
+                    message: "Form submitted successfully!",
+                })
+                e.currentTarget.reset()
+            } else {
+                setAlert({
+                    type: "error",
+                    message: "Form submission failed. Please try again.",
+                })
+            }
+        } catch (error) {
+            console.error("Error:", error)
+            setAlert({
+                type: "error",
+                message: "Something went wrong. Please try again later.",
+            })
+        }
+
+        setTimeout(() => setAlert(null), 3000)
     }
 
     return (
@@ -29,7 +64,6 @@ export function ContactForm() {
             <div className="absolute inset-0 w-full h-full bg-slate-900 z-0 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
 
             <div className="container mx-auto px-4 relative z-10">
-                {/* Hero Section with Animated Grid */}
                 <div className="relative mb-16">
                     <AnimatedGridPattern
                         numSquares={30}
@@ -38,21 +72,29 @@ export function ContactForm() {
                         repeatDelay={1}
                         className={cn(
                             "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
-                            "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
+                            "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
                         )}
                     />
-                    <h1
-                        className="text-5xl w-full text-center mt-10 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal leading-tight sm:leading-tight md:leading-tight lg:leading-tight text-white break-words hyphens-auto max-w-5xl mx-auto relative z-10"
-                        style={{ opacity: 1, transform: "none" }}
-                    >
+                    <h1 className="text-5xl w-full text-center mt-10 text-white font-normal max-w-5xl mx-auto">
                         Let&apos;s Work Together
                     </h1>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    {/* Form Column */}
                     <div className="shadow-input rounded-none md:rounded-2xl p-6 md:p-8 bg-slate-900/80 backdrop-blur-sm border border-slate-700/50">
                         <h2 className="text-2xl font-bold text-white mb-6">Send us a message</h2>
+
+                        {/* Alert Message */}
+                        {alert && (
+                            <div
+                                className={`mb-4 rounded-md p-4 text-sm font-medium ${alert.type === "success"
+                                        ? "bg-green-100 text-green-800 border border-green-300"
+                                        : "bg-red-100 text-red-800 border border-red-300"
+                                    }`}
+                            >
+                                {alert.message}
+                            </div>
+                        )}
 
                         <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -66,9 +108,7 @@ export function ContactForm() {
                                         placeholder="John"
                                         type="text"
                                         required
-                                        style={{
-                                            backgroundColor: "rgb(30 41 59 / 0.5)!important",
-                                        }}
+                                        style={{backgroundColor: "rgba(128, 128, 128, 0.05)"}}
                                         className="bg-slate-800/50 border-slate-600 text-white placeholder:text-slate-500 focus:border-cyan-500 backdrop-blur-sm"
                                     />
                                 </LabelInputContainer>
@@ -77,14 +117,13 @@ export function ContactForm() {
                                         Last Name
                                     </Label>
                                     <Input
+                                        style={{backgroundColor: "rgba(128, 128, 128, 0.05)"}}
+
                                         id="lastname"
                                         name="lastname"
                                         placeholder="Doe"
                                         type="text"
                                         required
-                                        style={{
-                                            backgroundColor: "rgb(30 41 59 / 0.5)!important",
-                                        }}
                                         className="bg-slate-800/50 border-slate-600 text-white placeholder:text-slate-500 focus:border-cyan-500 backdrop-blur-sm"
                                     />
                                 </LabelInputContainer>
@@ -96,16 +135,16 @@ export function ContactForm() {
                                 </Label>
                                 <Input
                                     id="email"
+                                    style={{backgroundColor: "rgba(128, 128, 128, 0.05)"}}
+
                                     name="email"
                                     placeholder="john@example.com"
                                     type="email"
                                     required
-                                    style={{
-                                        backgroundColor: "rgb(30 41 59 / 0.5)!important",
-                                    }}
                                     className="bg-slate-800/50 border-slate-600 text-white placeholder:text-slate-500 focus:border-cyan-500 backdrop-blur-sm"
                                 />
                             </LabelInputContainer>
+
                             <LabelInputContainer>
                                 <Label htmlFor="message" className="text-slate-200">
                                     Message
@@ -130,7 +169,6 @@ export function ContactForm() {
                         </form>
                     </div>
 
-                    {/* Contact Info Column */}
                     <div className="space-y-8">
                         <div className="shadow-input rounded-none md:rounded-2xl p-6 md:p-8 bg-slate-900/80 backdrop-blur-sm border border-slate-700/50">
                             <h2 className="text-2xl font-bold text-white mb-6">Contact Info</h2>
