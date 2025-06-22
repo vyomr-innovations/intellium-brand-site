@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import { MapPin, Mail } from "lucide-react"
 import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern"
+import emailjs from '@emailjs/browser'
 
 export function ContactForm() {
     const [alert, setAlert] = useState<{
@@ -13,41 +14,39 @@ export function ContactForm() {
         message: string
     } | null>(null)
 
+    const [loading, setLoading] = useState(false)
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const formData = new FormData(e.currentTarget)
+        setLoading(true)
 
+        const formData = new FormData(e.currentTarget)
         const data = {
             firstName: formData.get("firstname"),
             lastName: formData.get("lastname"),
             email: formData.get("email"),
             message: formData.get("message"),
         }
-
+        
         try {
-            const response = await fetch(
-                "https://script.google.com/macros/s/AKfycbxZlly8GL6TLnASUSiZC199GHMwm6pxy0OjbSHDl6a14PyUx1UitmwO4v7ZmB9eBGtkaA/exec",
+            await emailjs.send(
+                'service_0swg0vc',
+                'template_zdo1umw',
                 {
-                    method: "POST",
-                    body: JSON.stringify(data),
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
+                    name: `${data.firstName} ${data.lastName}`,
+                    email: data.email,
+                    message: data.message,
+                },
+                'jVhLHkBy-NXYg4ONK'
             )
 
-            if (response.ok) {
-                setAlert({
-                    type: "success",
-                    message: "Form submitted successfully!",
-                })
-                e.currentTarget.reset()
-            } else {
-                setAlert({
-                    type: "error",
-                    message: "Form submission failed. Please try again.",
-                })
-            }
+            // Reset form fields
+            e?.currentTarget?.reset()
+            
+            setAlert({
+                type: "success",
+                message: "Form submitted successfully!",
+            })
         } catch (error) {
             console.error("Error:", error)
             setAlert({
@@ -56,9 +55,9 @@ export function ContactForm() {
             })
         }
 
+        setLoading(false)
         setTimeout(() => setAlert(null), 3000)
     }
-
     return (
         <div className="min-h-screen bg-slate-900 w-full overflow-hidden py-16">
             <div className="absolute inset-0 w-full h-full bg-slate-900 z-0 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
@@ -84,12 +83,11 @@ export function ContactForm() {
                     <div className="shadow-input rounded-none md:rounded-2xl p-6 md:p-8 bg-slate-900/80 backdrop-blur-sm border border-slate-700/50">
                         <h2 className="text-2xl font-bold text-white mb-6">Send us a message</h2>
 
-                        {/* Alert Message */}
                         {alert && (
                             <div
                                 className={`mb-4 rounded-md p-4 text-sm font-medium ${alert.type === "success"
-                                        ? "bg-green-100 text-green-800 border border-green-300"
-                                        : "bg-red-100 text-red-800 border border-red-300"
+                                    ? "bg-green-100 text-green-800 border border-green-300"
+                                    : "bg-red-100 text-red-800 border border-red-300"
                                     }`}
                             >
                                 {alert.message}
@@ -108,7 +106,7 @@ export function ContactForm() {
                                         placeholder="John"
                                         type="text"
                                         required
-                                        style={{backgroundColor: "rgba(128, 128, 128, 0.05)"}}
+                                        style={{ backgroundColor: "rgba(128, 128, 128, 0.05)" }}
                                         className="bg-slate-800/50 border-slate-600 text-white placeholder:text-slate-500 focus:border-cyan-500 backdrop-blur-sm"
                                     />
                                 </LabelInputContainer>
@@ -117,8 +115,7 @@ export function ContactForm() {
                                         Last Name
                                     </Label>
                                     <Input
-                                        style={{backgroundColor: "rgba(128, 128, 128, 0.05)"}}
-
+                                        style={{ backgroundColor: "rgba(128, 128, 128, 0.05)" }}
                                         id="lastname"
                                         name="lastname"
                                         placeholder="Doe"
@@ -135,8 +132,7 @@ export function ContactForm() {
                                 </Label>
                                 <Input
                                     id="email"
-                                    style={{backgroundColor: "rgba(128, 128, 128, 0.05)"}}
-
+                                    style={{ backgroundColor: "rgba(128, 128, 128, 0.05)" }}
                                     name="email"
                                     placeholder="john@example.com"
                                     type="email"
@@ -160,11 +156,21 @@ export function ContactForm() {
                             </LabelInputContainer>
 
                             <button
-                                className="group/btn relative block h-12 w-full rounded-md bg-gradient-to-br font-medium text-white bg-slate-800 from-slate-900 to-slate-900 shadow-[0px_1px_0px_0px_#475569_inset,0px_-1px_0px_0px_#475569_inset] hover:shadow-lg transition-all duration-300 border border-slate-700/50"
+                                className="group/btn relative flex items-center justify-center gap-2 h-12 w-full rounded-md bg-gradient-to-br font-medium text-white bg-slate-800 from-slate-900 to-slate-900 shadow-[0px_1px_0px_0px_#475569_inset,0px_-1px_0px_0px_#475569_inset] hover:shadow-lg transition-all duration-300 border border-slate-700/50 disabled:opacity-50"
                                 type="submit"
+                                disabled={loading}
                             >
-                                Send Message &rarr;
-                                <BottomGradient />
+                                {loading ? (
+                                    <>
+                                        <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                        Sending...
+                                    </>
+                                ) : (
+                                    <>
+                                        Send Message &rarr;
+                                        <BottomGradient />
+                                    </>
+                                )}
                             </button>
                         </form>
                     </div>
@@ -195,7 +201,7 @@ export function ContactForm() {
                                                 href="mailto:contact@echortech.com"
                                                 className="text-cyan-400 hover:text-cyan-300 transition-colors"
                                             >
-                                                contact@intellium.in
+                                                contact@intelliumtech.ai
                                             </a>
                                         </div>
                                     </div>
