@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
 "use client"
 
@@ -39,12 +40,12 @@ export default function Navbar() {
                         >
                             <ul id="navbar-navlist" className="navbar-nav">
                                 <li className="nav-item">
-                                    <a className="nav-link fw-200" href="#services">
+                                    <a className="nav-link fw-200" href="/#services">
                                         Services
                                     </a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#about">
+                                    <a className="nav-link" href="/#about">
                                         About Us
                                     </a>
                                 </li>
