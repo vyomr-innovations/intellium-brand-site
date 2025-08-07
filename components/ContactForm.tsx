@@ -1,33 +1,50 @@
 "use client"
+
 import React, { useState } from "react"
+import { useForm } from "react-hook-form"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import { CheckCircle, XCircle } from 'lucide-react'
 import { cn } from "@/lib/utils"
-import { MapPin, Mail } from "lucide-react"
+import { MapPin, Mail } from 'lucide-react'
 import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern"
 import emailjs from '@emailjs/browser'
 
+interface FormData {
+    firstName: string
+    lastName: string
+    email: string
+    message: string
+}
+
 export function ContactForm() {
-    const [alert, setAlert] = useState<{
-        type: "success" | "error"
-        message: string
-    } | null>(null)
-
     const [loading, setLoading] = useState(false)
+    const [modalState, setModalState] = useState<{
+        isOpen: boolean
+        type: "success" | "error"
+        title: string
+        message: string
+    }>({
+        isOpen: false,
+        type: "success",
+        title: "",
+        message: ""
+    })
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors, isValid }
+    } = useForm<FormData>({
+        mode: "onChange"
+    })
+
+    const onSubmit = async (data: FormData) => {
         setLoading(true)
 
-        const formData = new FormData(e.currentTarget)
-        const data = {
-            firstName: formData.get("firstname"),
-            lastName: formData.get("lastname"),
-            email: formData.get("email"),
-            message: formData.get("message"),
-        }
-        
         try {
             await emailjs.send(
                 'service_0swg0vc',
@@ -40,28 +57,35 @@ export function ContactForm() {
                 'jVhLHkBy-NXYg4ONK'
             )
 
-            // Reset form fields
-            e?.currentTarget?.reset()
-            
-            setAlert({
+            // Reset form on success
+            reset()
+
+            setModalState({
+                isOpen: true,
                 type: "success",
-                message: "Form submitted successfully!",
+                title: "Message Sent Successfully!",
+                message: "Thank you for reaching out. We'll get back to you soon."
             })
         } catch (error) {
             console.error("Error:", error)
-            setAlert({
+            setModalState({
+                isOpen: true,
                 type: "error",
-                message: "Something went wrong. Please try again later.",
+                title: "Failed to Send Message",
+                message: "Something went wrong. Please try again later or contact us directly."
             })
+        } finally {
+            setLoading(false)
         }
-
-        setLoading(false)
-        setTimeout(() => setAlert(null), 3000)
     }
+
+    const closeModal = () => {
+        setModalState(prev => ({ ...prev, isOpen: false }))
+    }
+
     return (
         <div className="min-h-screen bg-slate-900 w-full overflow-hidden py-16">
             <div className="absolute inset-0 w-full h-full bg-slate-900 z-0 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
-
             <div className="container mx-auto px-4 relative z-10">
                 <div className="relative mb-16">
                     <AnimatedGridPattern
@@ -83,46 +107,46 @@ export function ContactForm() {
                     <div className="shadow-input rounded-none md:rounded-2xl p-6 md:p-8 bg-slate-900/80 backdrop-blur-sm border border-slate-700/50">
                         <h2 className="text-2xl font-bold text-white mb-6">Send us a message</h2>
 
-                        {alert && (
-                            <div
-                                className={`mb-4 rounded-md p-4 text-sm font-medium ${alert.type === "success"
-                                    ? "bg-green-100 text-green-800 border border-green-300"
-                                    : "bg-red-100 text-red-800 border border-red-300"
-                                    }`}
-                            >
-                                {alert.message}
-                            </div>
-                        )}
-
-                        <form className="space-y-6" onSubmit={handleSubmit}>
+                        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <LabelInputContainer>
-                                    <Label htmlFor="firstname" className="text-slate-200">
+                                    <Label htmlFor="firstName" className="text-slate-200">
                                         First Name
                                     </Label>
                                     <Input
-                                        id="firstname"
-                                        name="firstname"
+                                        id="firstName"
                                         placeholder="John"
                                         type="text"
-                                        required
                                         style={{ backgroundColor: "rgba(128, 128, 128, 0.05)" }}
                                         className="bg-slate-800/50 border-slate-600 text-white placeholder:text-slate-500 focus:border-cyan-500 backdrop-blur-sm"
+                                        {...register("firstName", {
+                                            required: "First name is required",
+                                            minLength: { value: 2, message: "First name must be at least 2 characters" }
+                                        })}
                                     />
+                                    {errors.firstName && (
+                                        <span className="text-red-400 text-sm">{errors.firstName.message}</span>
+                                    )}
                                 </LabelInputContainer>
+
                                 <LabelInputContainer>
-                                    <Label htmlFor="lastname" className="text-slate-200">
+                                    <Label htmlFor="lastName" className="text-slate-200">
                                         Last Name
                                     </Label>
                                     <Input
-                                        style={{ backgroundColor: "rgba(128, 128, 128, 0.05)" }}
-                                        id="lastname"
-                                        name="lastname"
+                                        id="lastName"
                                         placeholder="Doe"
                                         type="text"
-                                        required
+                                        style={{ backgroundColor: "rgba(128, 128, 128, 0.05)" }}
                                         className="bg-slate-800/50 border-slate-600 text-white placeholder:text-slate-500 focus:border-cyan-500 backdrop-blur-sm"
+                                        {...register("lastName", {
+                                            required: "Last name is required",
+                                            minLength: { value: 2, message: "Last name must be at least 2 characters" }
+                                        })}
                                     />
+                                    {errors.lastName && (
+                                        <span className="text-red-400 text-sm">{errors.lastName.message}</span>
+                                    )}
                                 </LabelInputContainer>
                             </div>
 
@@ -132,13 +156,21 @@ export function ContactForm() {
                                 </Label>
                                 <Input
                                     id="email"
-                                    style={{ backgroundColor: "rgba(128, 128, 128, 0.05)" }}
-                                    name="email"
                                     placeholder="john@example.com"
                                     type="email"
-                                    required
+                                    style={{ backgroundColor: "rgba(128, 128, 128, 0.05)" }}
                                     className="bg-slate-800/50 border-slate-600 text-white placeholder:text-slate-500 focus:border-cyan-500 backdrop-blur-sm"
+                                    {...register("email", {
+                                        required: "Email is required",
+                                        pattern: {
+                                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                            message: "Invalid email address"
+                                        }
+                                    })}
                                 />
+                                {errors.email && (
+                                    <span className="text-red-400 text-sm">{errors.email.message}</span>
+                                )}
                             </LabelInputContainer>
 
                             <LabelInputContainer>
@@ -147,18 +179,23 @@ export function ContactForm() {
                                 </Label>
                                 <Textarea
                                     id="message"
-                                    name="message"
                                     placeholder="Tell us about your project..."
-                                    required
                                     rows={5}
                                     className="bg-slate-800/50 border-slate-600 text-white placeholder:text-slate-500 focus:border-cyan-500 resize-none backdrop-blur-sm"
+                                    {...register("message", {
+                                        required: "Message is required",
+                                        minLength: { value: 10, message: "Message must be at least 10 characters" }
+                                    })}
                                 />
+                                {errors.message && (
+                                    <span className="text-red-400 text-sm">{errors.message.message}</span>
+                                )}
                             </LabelInputContainer>
 
                             <button
                                 className="group/btn relative flex items-center justify-center gap-2 h-12 w-full rounded-md bg-gradient-to-br font-medium text-white bg-slate-800 from-slate-900 to-slate-900 shadow-[0px_1px_0px_0px_#475569_inset,0px_-1px_0px_0px_#475569_inset] hover:shadow-lg transition-all duration-300 border border-slate-700/50 disabled:opacity-50"
                                 type="submit"
-                                disabled={loading}
+                                disabled={loading || !isValid}
                             >
                                 {loading ? (
                                     <>
@@ -192,13 +229,12 @@ export function ContactForm() {
                                             </p>
                                         </div>
                                     </div>
-
                                     <div className="flex items-center gap-3">
                                         <Mail className="h-5 w-5 text-cyan-400" />
                                         <div>
                                             <h3 className="text-white font-medium">Email Us</h3>
                                             <a
-                                                href="mailto:contact@echortech.com"
+                                                href="mailto:contact@intelliumtech.ai"
                                                 className="text-cyan-400 hover:text-cyan-300 transition-colors"
                                             >
                                                 contact@intelliumtech.ai
@@ -219,6 +255,14 @@ export function ContactForm() {
                     </div>
                 </div>
             </div>
+
+            <AlertModal
+                isOpen={modalState.isOpen}
+                onClose={closeModal}
+                type={modalState.type}
+                title={modalState.title}
+                message={modalState.message}
+            />
         </div>
     )
 }
@@ -240,4 +284,37 @@ const LabelInputContainer = ({
     className?: string
 }) => {
     return <div className={cn("flex w-full flex-col space-y-2", className)}>{children}</div>
+}
+
+interface AlertModalProps {
+    isOpen: boolean
+    onClose: () => void
+    type: "success" | "error"
+    title: string
+    message: string
+}
+
+export function AlertModal({ isOpen, onClose, type, title, message }: AlertModalProps) {
+    return (
+        <Dialog open={isOpen} onOpenChange={onClose}>
+            <DialogContent className="bg-slate-900 border-slate-700 text-white max-w-md">
+                <DialogHeader>
+                    <div className="flex items-center gap-3 mb-2">
+                        {type === "success" ? (
+                            <CheckCircle className="h-6 w-6 text-green-400" />
+                        ) : (
+                            <XCircle className="h-6 w-6 text-red-400" />
+                        )}
+                        <DialogTitle className={`text-lg font-semibold ${type === "success" ? "text-green-400" : "text-red-400"
+                            }`}>
+                            {title}
+                        </DialogTitle>
+                    </div>
+                    <DialogDescription className="text-slate-300 text-left">
+                        {message}
+                    </DialogDescription>
+                </DialogHeader>
+            </DialogContent>
+        </Dialog>
+    )
 }
