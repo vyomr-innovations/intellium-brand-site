@@ -3,8 +3,8 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Navigation from "../components/Navbar";
+import CookieConsentWrapper from "@/components/CookieConsentWrapper";
 const inter = Inter({ subsets: ["latin"] });
-
 export const metadata = {
   title: "Intellium",
   description: "AI Solutions for the Future",
@@ -67,7 +67,9 @@ export default function RootLayout({
               </p>
             </div>
           </div>
+
         </footer>
+         <CookieConsentWrapper />
       </body>
     </html>
   );
