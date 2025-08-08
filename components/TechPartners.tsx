@@ -13,7 +13,8 @@ const partners = [
     },
     {
         name: "Loveble Ai",
-        logo: "https://cdn.prod.website-files.com/6441849561895f1cf617a968/67e1f364bd5cff282e463e56_lovable-logo.svg"
+        logo: "./assets/images/logo/lovableai.svg"
+
     },
     {
         name: "Anthropic AI",
